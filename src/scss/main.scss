@@ -1,0 +1,367 @@
+/* 
+==============================================
+CONTENT:	Project Name Here
+AUTHOR:		Your Name Here
+==============================================
+
+TABLE OF CONTENTS:
+
+0. Reset
+1. Main Layout
+2. Content
+
+==============================================
+*/
+
+/* 0. Reset ================================= */
+
+/* 
+If you want to add partials, use Sass Modules via @use:
+@use 'variables';
+
+Usage: partial-name.variable/mixin/function-name:
+background: variables.$primary-color;
+*/
+
+@import 'reset';
+@import 'variables';
+@import 'mixins';
+
+/* 1. Main Layout ================================= */
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background: $primary-color;
+	font-family: $hFont;
+}
+
+/* 2. Content ================================= */
+.top{
+	display: flex;
+	flex-direction: column;
+
+	.hero{
+		background: url(/src/img/Group3Edit.png);
+		background-size: cover;
+		height: 400px;
+		width: 100%;
+		color: $secondary-text;
+		display: flex;
+		flex-direction: column;
+
+		header {
+			display: flex;
+			justify-content: center;
+			padding-top: 50px;
+
+			h1{
+				font-size: 1.3em;
+				font-weight: $extraBold;
+			}
+
+			.daburger{
+				width: fit-content;
+				height: fit-content;
+				position: absolute;
+				left: 4.2%;
+
+				div{
+					width: 20px;
+					height: 2px;
+					margin: 4.2px;
+					background-color: $primary-color;
+
+				}
+
+				
+			}
+			nav {
+				display: none;
+
+				ul{
+					display: flex;
+					
+					li{
+						margin: 0px .66em;
+					}
+				}
+			}
+
+			.burgerMenu{
+				position: absolute;
+				right: 0%;
+				top: 15.5%;
+				display: none;
+				z-index: 2;
+
+				
+				
+				.burgNav{
+					background-color: $primary-color;
+					opacity: 95%;
+					z-index: -1;
+
+					ul{
+						display: grid;
+						width: 100vw;
+						gap: 0;
+						grid-template-columns: repeat(4, 1fr);
+						grid-template-rows: 1fr;
+						border-bottom: .42em $primary-text solid;
+
+						li{
+							height: max-content;
+							display: flex;
+							justify-content: center;
+							align-content: center;
+							border-left: .13em $primary-color solid ;
+							border-right: .13em $primary-color solid ;
+							
+							a{
+								padding:22% 10px 20% 10px;
+								text-decoration: none;
+								text-transform: uppercase;
+							}
+						}
+					}
+				}
+
+			}
+
+			@include bp-L{
+
+				h1{
+					position: absolute;
+					left: 5%;
+				}
+
+				.daburger{
+					display: none;
+				}
+
+				nav{
+					display: block;
+
+					ul{
+						
+						a{
+							color: $primary-color;
+							text-decoration: none;
+
+						}
+						.active{
+							text-decoration: underline;
+						}
+					}
+				}
+			}
+		}
+		.buttons{
+			margin-top: auto;
+			margin-left: auto;
+			display: flex;
+			
+
+			button{
+				background-color: $secondary-color;
+				border: none;
+				color: $para-text;
+				width: 45px;
+				height: 45px;
+				font-size: 18px;
+				margin: 0px .42px;
+			}
+		}
+
+		@include bp-M{
+			background: url(/src/img/Group3.png);
+			background-size: cover;
+
+			.buttons{
+
+				button{
+					font-size: 1.3rem;
+					width: 80px;
+					height: 80px;
+				}
+			}
+		}
+		
+		@include bp-L{
+			height: 100%;
+			background: url(/src/img/Group3Edit2.png);
+			background-size: cover;
+
+			.buttons{
+				margin-right: -200px;
+
+				button{
+					width: 100px;
+					height: 100px;
+				}
+			}
+		}
+
+	}
+	article{
+		font-weight: $sizeReg;
+		color: $para-text;
+		font-size: .9rem;
+		padding: 4em 2em;
+		display: flex;
+		flex-direction: column;
+		height: 400px;
+
+		h2{
+			font-size: 1rem;
+			color: $primary-text;
+			font-weight: $semiBold;
+			margin: 30px 0px 50px 0px;
+		}
+		.cta{
+			display: flex;
+			margin-top: auto;
+			width: 100%;
+			overflow: hidden;
+			
+
+			a{
+				width: 100%;
+				font-size: .666rem;
+				color: $primary-text;
+				font-weight: $medBold;
+				text-transform: uppercase;
+				letter-spacing: 1rem;
+				text-decoration: none;
+				height: 50px;
+				padding-top: 10px;
+
+				.arrow{
+					display: flex;
+					height: 13px;
+					border-radius: 10px;
+					align-items: center;
+					margin-left: 85px;
+					margin-top: 1.3%;
+					z-index: 2;
+
+					.shaft{
+						width: 0%;
+						transition: 420ms linear 420ms;
+						height: 2px;
+						background-color: $secondary-color;
+					}
+					.head{
+						margin-bottom: -2px;
+						margin-left: 80px;
+						.arTop{
+							width: 0px;
+							transition: 420ms linear;
+							height: 2px;
+							background-color: $secondary-color;
+						}
+						.arBot{
+							width: 0px;
+							transition: 420ms linear;
+							height: 2px;
+							background-color: $secondary-color;
+						}
+					}
+				}
+			}
+
+			@include bp-L{
+				margin-top: 130px;
+			}
+		}
+
+
+		@include bp-L{
+			width: 60vw;
+			height: 100%;
+		}
+	}
+
+	.mainArt:hover{
+		.arrow{
+			height: 2px;
+
+			.shaft{
+				width: 60px;
+				transform: scaleX(4.2);
+				transition: 420ms linear;
+			}
+			.head{
+				margin-bottom: -18px;
+				.arTop{
+					width: 20px;
+					transform: rotateZ(30deg);
+					transition: 420ms linear 420ms;
+					margin-top: -15px;
+					margin-bottom: 8px;
+				}
+				.arBot{
+					width: 20px;
+					transform: rotateZ(-30deg);
+					transition: width 420ms linear 420ms;
+					margin-bottom: -15px;
+				}
+			}
+		}
+
+		.cta:hover{
+			.arrow{
+				transform: translateX(50%);
+				transition: 420ms linear;
+			}
+		}
+	}
+
+	@include bp-L{
+		flex-direction: row;
+		flex: 2;
+		height: 70vh;
+	}
+}
+
+.bottom{
+
+	display: flex;
+	flex-direction: column;
+
+
+	article{
+		padding: 4em 2em;
+		color: $para-text;
+		font-size: .85rem;
+		font-weight: $sizeReg;
+
+		h3{
+			text-transform: uppercase;
+			letter-spacing: .2em;
+			margin: 20px 0px;
+			color: $primary-text;
+			font-size: .7rem;
+			font-weight: $medBold;
+		}
+		
+		@include bp-L{
+			width: 50%;
+		}
+	}
+
+	@include bp-L{
+		flex-direction: row;
+		flex: 3;
+		height: 30vh;
+
+		img{
+			width: 25%;
+		}
+	}
+}
+
+
